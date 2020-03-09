@@ -13,6 +13,17 @@ namespace Prototyping
         SpriteBatch spriteBatch;
         Player player;
 
+        KeyboardState currentKeyboardState;
+        KeyboardState previousKeyboardState;
+
+        GamePadState currentGamePadState;
+        GamePadState previousGamePadState;
+
+        MouseState currentMouseState;
+        MouseState previousMouseState;
+
+        float playerMoveSpeed;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
@@ -30,6 +41,7 @@ namespace Prototyping
             // TODO: Add your initialization logic here
             player = new Player();
             base.Initialize();
+            playerMoveSpeed = 8;
         }
 
         /// <summary>

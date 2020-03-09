@@ -1,6 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using MSEngine;
+using RawMSSolution.GameScreens;
 
 namespace RawMSSolution
 {
@@ -9,13 +11,31 @@ namespace RawMSSolution
     /// </summary>
     public class Game1 : Game
     {
-        GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
-        
+        private GraphicsDeviceManager graphics;
+        public SpriteBatch SpriteBatch;
+        private GameStateManager stateManager;
+        public TitleScreen titleScreen;
+
+        const int screenWidth = 1024;
+        const int screenHeight = 768;
+
+        public readonly Rectangle ScreenRectangle;
+
         public Game1()
         {
             graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = screenWidth;
+            graphics.PreferredBackBufferHeight = screenHeight;
+
+            ScreenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
             Content.RootDirectory = "Content";
+
+            this.stateManager = new GameStateManager(this);
+            Components.Add(new InputHandler(this));
+            Components.Add(this.stateManager);
+
+            titleScreen = new TitleScreen(this, stateManager);
+            stateManager.ChangeState(titleScreen);
         }
 
         /// <summary>
@@ -38,7 +58,7 @@ namespace RawMSSolution
         protected override void LoadContent()
         {
             // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
 
             // TODO: use this.Content to load your game content here
         }
