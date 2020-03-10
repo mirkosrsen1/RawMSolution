@@ -14,6 +14,7 @@ namespace RawMSSolution
         public static TitleScreen TitleScreen;
         public static StartMenuScreens StartMenuScreens;
         public static GamePlayScreen GamePlayScreen;
+
         const int screenWidth = 1024;
         const int screenHeight = 768;
 
