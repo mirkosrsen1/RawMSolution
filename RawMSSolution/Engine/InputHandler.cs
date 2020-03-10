@@ -10,9 +10,23 @@ namespace MSEngine
 
         public static KeyboardState LastKeyboardState { get; private set; }
 
+        public static GamePadState[] GamePadStates { get; private set; }
+
+        public static GamePadState[] LastGamePadStates { get; private set; }
+
+        private PlayerIndex[] playerIndexes {get;set;}
+
         public InputHandler(Game game) : base(game)
         {
             KeyboardState = Keyboard.GetState();
+            playerIndexes = (PlayerIndex[])Enum.GetValues(typeof(PlayerIndex));
+
+            GamePadStates = new GamePadState[playerIndexes.Length];
+
+            foreach(PlayerIndex index in playerIndexes)
+            {
+                GamePadStates[(int)index] = GamePad.GetState(index);
+            }
         }
 
         public override void Initialize()
@@ -24,6 +38,13 @@ namespace MSEngine
         {
             LastKeyboardState = KeyboardState;
             KeyboardState = Keyboard.GetState();
+
+            LastGamePadStates = (GamePadState[])GamePadStates.Clone();
+
+            foreach (PlayerIndex index in playerIndexes)
+            {
+                GamePadStates[(int)index] = GamePad.GetState(index);
+            }
 
             base.Update(gameTime);
         }
@@ -47,5 +68,21 @@ namespace MSEngine
         {
             return KeyboardState.IsKeyDown(key);
         }
+
+        public static bool ButtonReleased(Buttons button, PlayerIndex index)
+        {
+            return GamePadStates[(int)index].IsButtonUp(button) &&
+            LastGamePadStates[(int)index].IsButtonDown(button);
+        }
+        public static bool ButtonPressed(Buttons button, PlayerIndex index)
+        {
+            return GamePadStates[(int)index].IsButtonDown(button) &&
+            LastGamePadStates[(int)index].IsButtonUp(button);
+        }
+        public static bool ButtonDown(Buttons button, PlayerIndex index)
+        {
+            return GamePadStates[(int)index].IsButtonDown(button);
+        }
+
     }
 }

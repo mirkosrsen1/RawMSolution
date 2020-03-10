@@ -13,7 +13,7 @@
     <AssemblyName>RawMSSolution</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MonoGamePlatform>DesktopGL</MonoGamePlatform>
-    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Game1.cs" />
     <Compile Include="GameScreens\BaseGameState.cs" />
+    <Compile Include="GameScreens\StartMenuScreens.cs" />
     <Compile Include="GameScreens\TitleScreen.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -109,6 +110,9 @@
     <None Include="app.config" />
     <None Include="app.manifest" />
     <Content Include="Content\Background\Logo.xnb">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\Fonts\ControlFont.xnb">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>

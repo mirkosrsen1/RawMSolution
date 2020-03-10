@@ -15,6 +15,7 @@ namespace RawMSSolution
         public SpriteBatch SpriteBatch;
         private GameStateManager stateManager;
         public TitleScreen titleScreen;
+        public StartMenuScreens startMenuScreens;
 
         const int screenWidth = 1024;
         const int screenHeight = 768;
@@ -35,6 +36,7 @@ namespace RawMSSolution
             Components.Add(this.stateManager);
 
             titleScreen = new TitleScreen(this, stateManager);
+            startMenuScreens = new StartMenuScreens(this, stateManager);
             stateManager.ChangeState(titleScreen);
         }
 
