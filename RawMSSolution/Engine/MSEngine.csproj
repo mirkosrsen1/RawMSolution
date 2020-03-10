@@ -47,12 +47,12 @@
     <Compile Include="Controls\ControlManager.cs" />
     <Compile Include="Controls\Label.cs" />
     <Compile Include="Controls\LinkLabel.cs" />
-    <Compile Include="GameState.cs" />
-    <Compile Include="GameStateManager.cs" />
-    <Compile Include="Game\BaseGameState.cs" />
-    <Compile Include="Game\BaseGame.cs" />
+    <Compile Include="Controls\PictureBox.cs" />
+    <Compile Include="Core\GameState.cs" />
+    <Compile Include="Core\GameStateManager.cs" />
+    <Compile Include="Core\BaseGameState.cs" />
+    <Compile Include="Core\BaseGame.cs" />
     <Compile Include="InputHandler.cs" />
-    <Compile Include="Manager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

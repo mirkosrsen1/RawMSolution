@@ -11,19 +11,18 @@ namespace RawMSSolution
     /// </summary>
     public class Game1 : BaseGame
     {
-        public static TitleScreen titleScreen;
-        public static StartMenuScreens startMenuScreens;
-
+        public static TitleScreen TitleScreen;
+        public static StartMenuScreens StartMenuScreens;
+        public static GamePlayScreen GamePlayScreen;
         const int screenWidth = 1024;
         const int screenHeight = 768;
 
-        public readonly Rectangle ScreenRectangle;
-
         public Game1() : base()
         {
-            titleScreen = new TitleScreen(this, stateManager);
-            startMenuScreens = new StartMenuScreens(this, stateManager);
-            stateManager.ChangeState(titleScreen);
+            TitleScreen = new TitleScreen(this, stateManager);
+            StartMenuScreens = new StartMenuScreens(this, stateManager);
+            GamePlayScreen = new GamePlayScreen(this, stateManager);
+            stateManager.ChangeState(TitleScreen);
         }
 
         /// <summary>

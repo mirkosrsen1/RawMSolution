@@ -62,7 +62,7 @@ namespace RawMSSolution.GameScreens
 
         private void startLabel_Selected(object sender, EventArgs e)
         {
-            StateManager.PushState(Game1.startMenuScreens);
+            StateManager.PushState(Game1.StartMenuScreens);
         }
     }
 }

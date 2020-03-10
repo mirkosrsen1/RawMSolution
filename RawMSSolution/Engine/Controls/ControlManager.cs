@@ -15,6 +15,8 @@ namespace MSEngine.Controls
 
         private int selectedControl { get; set; }
 
+        public event EventHandler FocusChange;
+
         public ControlManager(SpriteFont spriteFont)
         {
             SpriteFont = spriteFont;
@@ -99,6 +101,11 @@ namespace MSEngine.Controls
 
                 if (this[selectedControl].TabStop && this[selectedControl].Enabled)
                 {
+                    if(FocusChange != null)
+                    {
+                        FocusChange(this[selectedControl], null);
+                    }
+
                     break;
                 }
 
@@ -129,6 +136,11 @@ namespace MSEngine.Controls
 
                 if (this[selectedControl].TabStop && this[selectedControl].Enabled)
                 {
+                    if(FocusChange != null)
+                    {
+                        FocusChange(this[selectedControl], null);
+                    }
+
                     break;
                 }
 
