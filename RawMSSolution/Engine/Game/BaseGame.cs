@@ -1,29 +1,36 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using RawMSSolution.Core;
-using RawMSSolution.GameScreens;
+using MSEngine;
 
-namespace RawMSSolution
+namespace RawMSSolution.Core
 {
     /// <summary>
     /// This is the main type for your game.
     /// </summary>
-    public class Game1 : BaseGame
+    public class BaseGame : Game
     {
-        public static TitleScreen titleScreen;
-        public static StartMenuScreens startMenuScreens;
+        public GraphicsDeviceManager graphics { get; private set; }
+        public SpriteBatch SpriteBatch { get; private set; }
+        public GameStateManager stateManager { get; private set; }
 
         const int screenWidth = 1024;
         const int screenHeight = 768;
 
         public readonly Rectangle ScreenRectangle;
 
-        public Game1() : base()
+        public BaseGame()
         {
-            titleScreen = new TitleScreen(this, stateManager);
-            startMenuScreens = new StartMenuScreens(this, stateManager);
-            stateManager.ChangeState(titleScreen);
+            graphics = new GraphicsDeviceManager(this);
+            graphics.PreferredBackBufferWidth = screenWidth;
+            graphics.PreferredBackBufferHeight = screenHeight;
+
+            ScreenRectangle = new Rectangle(0, 0, screenWidth, screenHeight);
+            Content.RootDirectory = "Content";
+
+            this.stateManager = new GameStateManager(this);
+            Components.Add(new InputHandler(this));
+            Components.Add(this.stateManager);
         }
 
         /// <summary>
@@ -37,6 +44,18 @@ namespace RawMSSolution
             // TODO: Add your initialization logic here
 
             base.Initialize();
+        }
+
+        /// <summary>
+        /// LoadContent will be called once per game and is the place to load
+        /// all of your content.
+        /// </summary>
+        protected override void LoadContent()
+        {
+            // Create a new SpriteBatch, which can be used to draw textures.
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
+
+            // TODO: use this.Content to load your game content here
         }
 
         /// <summary>

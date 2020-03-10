@@ -8,6 +8,7 @@ using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
 using MSEngine;
 using MSEngine.Controls;
+using MSEngine.Core;
 
 namespace RawMSSolution.GameScreens
 {
@@ -61,7 +62,7 @@ namespace RawMSSolution.GameScreens
 
         private void startLabel_Selected(object sender, EventArgs e)
         {
-            StateManager.PushState(GameRef.startMenuScreens);
+            StateManager.PushState(Game1.startMenuScreens);
         }
     }
 }

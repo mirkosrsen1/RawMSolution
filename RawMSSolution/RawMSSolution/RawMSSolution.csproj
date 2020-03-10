@@ -44,7 +44,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Game1.cs" />
-    <Compile Include="GameScreens\BaseGameState.cs" />
     <Compile Include="GameScreens\StartMenuScreens.cs" />
     <Compile Include="GameScreens\TitleScreen.cs" />
     <Compile Include="Program.cs" />

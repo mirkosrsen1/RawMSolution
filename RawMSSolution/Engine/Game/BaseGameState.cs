@@ -1,19 +1,13 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Content;
 using Microsoft.Xna.Framework.Graphics;
-using MSEngine;
 using MSEngine.Controls;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RawMSSolution.Core;
 
-namespace RawMSSolution.GameScreens
+namespace MSEngine.Core
 {
     public abstract class BaseGameState : GameState
     {
-        protected Game1 GameRef;
+        protected BaseGame GameRef;
 
         protected ControlManager ControlManager;
 
@@ -21,7 +15,7 @@ namespace RawMSSolution.GameScreens
 
         public BaseGameState(Game game, GameStateManager manager) : base(game, manager)
         {
-            this.GameRef = (Game1)game;
+            this.GameRef = (BaseGame)game;
 
             PlayerIndexInControl = PlayerIndex.One;
         }
